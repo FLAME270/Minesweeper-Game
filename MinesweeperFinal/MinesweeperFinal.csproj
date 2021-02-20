@@ -52,6 +52,12 @@
     <Compile Include="clickableCell.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EnterNames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterNames.Designer.cs">
+      <DependentUpon>EnterNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="grid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EnterNames.resx">
+      <DependentUpon>EnterNames.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="grid.resx">
       <DependentUpon>grid.cs</DependentUpon>
     </EmbeddedResource>

@@ -3,7 +3,7 @@ This is my own work
 Version 2.1
 CST-227
 Minesweeper Application*/
-
+/*
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -157,9 +157,6 @@ namespace MinesweeperFinal
                         ControlGrid(Grid);
                         string text = "Game Over :( ";
                         MessageBox.Show(text);
-                        highScore_Form top5 = new highScore_Form();
-                        top5.Show();
-                        this.Visible = false;
                     }
                     else if (this.getNeighbors() == 0)
                     {
@@ -225,4 +222,4 @@ namespace MinesweeperFinal
             this.BackgroundImageLayout = ImageLayout.Stretch;
         }
     }
-}
+}*/

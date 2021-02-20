@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿/*Tyler Wiggins
+This is my own work
+Version 6.9
+CST-227
+Minesweeper Application*/
+
+using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MinesweeperFinal
@@ -18,9 +18,7 @@ namespace MinesweeperFinal
             InitializeComponent();
         }
 
-     
-
-        
+        //Get the clikableCell class
         public clickableCell[,] square;
 
         //Stores the size of the grid.
@@ -85,7 +83,7 @@ namespace MinesweeperFinal
 
             // Get random percentage between 15-20.
             Random rnd = new Random();
-            double ranPercent = rnd.Next(3, 5);
+            double ranPercent = rnd.Next(7, 10);
 
             // Use random percentage to find number of cells that will be live.
             ranPercent = ranPercent / 100;
@@ -252,6 +250,10 @@ namespace MinesweeperFinal
             }
         }
 
+
+
+        //put in business
+        /////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Recursive algorithm that reveals blocks of cells with no live neighbors.
         /// </summary>
@@ -269,7 +271,7 @@ namespace MinesweeperFinal
                     double val = square[i - 1, j].getNeighbors();
                     bool visited = square[i - 1, j].getVisited();
 
-                    // if neighbor 0
+                    // if the neighbor is a 0 and not visited.
                     if ((Convert.ToInt32(val) == 0) && (!visited))
                     {
                         // turn neighbor to visited.
@@ -378,7 +380,8 @@ namespace MinesweeperFinal
                     }
                 }
             }
-            // If you have won the game
+
+            // If you have won the game.
             if (cellsVisited == visitedcounter)
             {
                 // stop timer
@@ -388,25 +391,29 @@ namespace MinesweeperFinal
 
                 // Format and display the TimeSpan value.
                 string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                string text = "Congratulations, your have Won!" + Environment.NewLine + "Time elapsed: " + elapsedTime + "seconds.";
+                string text = "Congratulations, your have Won!" + Environment.NewLine + "Time elapsed: " + elapsedTime + " seconds.";
 
                 // show dialog box and capture return
-                DialogResult result = MessageBox.Show(text, "", MessageBoxButtons.OK);
+                DialogResult result = MessageBox.Show(text, "Awesome", MessageBoxButtons.OK);
+
                 // if return is ok
                 if (result == DialogResult.OK)
                 {
                     // bool for win or lose
                     bool win = true;
-                    highScore_Form highScore = new highScore_Form(difficulty, ts, win);
-                    highScore.Show();
+                    EnterNames addscore1 = new EnterNames(difficulty, ts, win);
+                    addscore1.Show();
+                    this.Close();
                 }
                 // if return is cancel or close
                 else if (result == DialogResult.Cancel)
                 {
                     // bool for win or lose
                     bool win = true;
-                    highScore_Form highScore = new highScore_Form(difficulty, ts, win); ;
-                    highScore.Show();
+
+                    EnterNames addscore = new EnterNames(difficulty, ts, win);
+                    addscore.Show();
+                    this.Close();
                 }
             }
         }

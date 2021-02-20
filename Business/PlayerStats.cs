@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*Tyler Wiggins
+This is my own work
+Version 6.9
+CST-227
+Minesweeper Application*/
+
+using System;
 
 namespace MinesweeperFinal
 {
@@ -10,15 +12,16 @@ namespace MinesweeperFinal
     public class PlayerStats : IComparable<PlayerStats>
     {
         // initials, level and time
-        public string Initials { get; set; }
-        public string level { get; set; }
-        public TimeSpan time { get; set; }
+        public string name { get; set; }
+
+        public int difficulty { get; set; }
+        public int time { get; set; }
 
         // Constructor for new playerstats
-        public PlayerStats(string Initials, string level, TimeSpan time)
+        public PlayerStats(string name, int difficulty, int time)
         {
-            this.Initials = Initials;
-            this.level = level;
+            this.name = name;
+            this.difficulty = difficulty;
             this.time = time;
         }
 
@@ -26,6 +29,11 @@ namespace MinesweeperFinal
         public int CompareTo(PlayerStats other)
         {
             return time.CompareTo(other.time);
+        }
+
+        public override String ToString()
+        {
+            return name + difficulty + time.ToString();
         }
     }
 }

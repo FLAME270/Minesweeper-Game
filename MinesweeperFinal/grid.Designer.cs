@@ -48,7 +48,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "grid";
-            this.Text = "MINESWEEPER";
+            this.Text = "MINESWEEPER Game";
             this.Load += new System.EventHandler(this.grid_Load);
             this.ResumeLayout(false);
 

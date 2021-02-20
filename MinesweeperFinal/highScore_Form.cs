@@ -1,259 +1,173 @@
-﻿
+﻿/*Tyler Wiggins
+This is my own work
+Version 6.9
+CST-227
+Minesweeper Application*/
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MinesweeperFinal
 {
     public partial class highScore_Form : Form
     {
-        //Creates the difficulty attr.
-        public string difficulty;
-        //Creates the score TimeSpan attr.
-        public TimeSpan score;
-        // creat win attr
-        public bool win;
-
-        // Create generic for each difficulty highscore
-        public List<PlayerStats> easy = new List<PlayerStats>();
-        public List<PlayerStats> medium = new List<PlayerStats>();
-        public List<PlayerStats> hard = new List<PlayerStats>();
-
-
         public highScore_Form()
         {
             InitializeComponent();
         }
 
-        public highScore_Form(int difficulty, TimeSpan score, bool win)
+        //Reads list of scores from PlayerStatus.
+        private List<PlayerStats> scores = new List<PlayerStats>();
+        private List<PlayerStats> sortedScores = new List<PlayerStats>();
+        //Makes variables that stores data.
+        private int difficulty;
+        private TimeSpan ts;
+        private bool win;
+        private string initials;
+
+        public highScore_Form(int difficulty, int difficulty1, TimeSpan timeSpan, TimeSpan ts, bool win, string initials)
         {
+            //Reads out previous high scores from txt file.
 
-            // Get values from highScore External File
-            foreach (string line in File.ReadLines(@"C:\Users\flame\Downloads\HighScores.txt"))
+        }
+
+        /// <summary>
+        /// Adds new score to list of top players.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="difficulty"></param>
+        /// <param name="time"></param>
+        public highScore_Form(int difficulty, string name, int time)
+        {
+            //Makes new score.
+            NewScore(name, difficulty, time);
+            //Adds the new score to a txt file.
+            using (StreamReader input = new StreamReader(Path.Combine(Environment.CurrentDirectory, "HighScores.txt")))
             {
+                //Variables for adding to the file.
+                string line;
+                int savedtime;
+                string[] split;
 
-                // split line by comma
-                var values = line.Split(',');
-
-                // add new list object depnding on difficulty
-                if (values[1] == "easy")
+                while ((line = input.ReadLine()) != null)
                 {
-                    easy.Add(new PlayerStats(values[0], values[1], TimeSpan.Parse(values[2])));
+                    split = line.Split(' ');
+                    Int32.TryParse(split[2], out savedtime);
+                    NewScore(split[0], split[1], savedtime);
                 }
-                else if (values[1] == "medium")
+            }
+            //Writes new score to a txt file.
+            using (StreamWriter output = new StreamWriter(Path.Combine(Environment.CurrentDirectory, "HighScores.txt")))
+            {
+                foreach (var PlayerStats in scores)
                 {
-                    medium.Add(new PlayerStats(values[0], values[1], TimeSpan.Parse(values[2])));
+                    //Writes in new data.
+                    output.WriteLine(PlayerStats.name + " " + PlayerStats.difficulty + " " + PlayerStats.time);
                 }
-                else if (values[1] == "hard")
-                {
-                    hard.Add(new PlayerStats(values[0], values[1], TimeSpan.Parse(values[2])));
-                }
-
             }
 
-            if (difficulty == 1)
-            {
-                this.difficulty = "easy";
-            }
-            else if (difficulty == 2)
-            {
-                this.difficulty = "medium";
-            }
-            else if (difficulty == 3)
-            {
-                this.difficulty = "hard";
+            //Query to sort the new score added.
+            var queryScores =
+                from PlayerStats in scores
+                where PlayerStats.difficulty == difficulty
+                orderby PlayerStats.time ascending
+                select PlayerStats;
 
+            //Add the new score to the listbox.
+            foreach (var PlayerStats in queryScores)
+            {
+                sortedScores.Add(PlayerStats);
             }
-            this.score = score;
-            this.win = win;
+
             InitializeComponent();
         }
 
-  /*      // Set Grid class for each cell
-        public MinesweeperFinal Menu;
-
-        // Have Current Grid class
-        public void createMenu(MinesweeperFinal Menu)
+        private void NewScore(string v1, string v2, int savedtime)
         {
-            Menu = Menu;
-        }*/
-
-        // Initialize Form
-        private void highScore_Form_Load(object sender, EventArgs e)
-        {
-
-            // Hide these objects on lose
-            if (!win)
-            {
-                initials_textbox.Visible = false;
-                highscore_btn.Visible = false;
-                label4.Visible = false;
-                label5.Visible = false;
-                yourScore_label.Visible = false;
-            }
-            else // show these objects on win
-            {
-                initials_textbox.Visible = true;
-                highscore_btn.Visible = true;
-                label4.Visible = true;
-                label5.Visible = true;
-                yourScore_label.Visible = true;
-                yourScore_label.Text = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", score.Hours, score.Minutes, score.Seconds, score.Milliseconds / 10);
-            }
-
-            // On win or lose show the top five scores for that difficulty
-            string output = "Difficulty: " + difficulty + Environment.NewLine + Environment.NewLine;
-
-            if (difficulty == "easy")
-            {
-                foreach (var stat in easy)
-                {
-                    output += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-            }
-            else if (difficulty == "medium")
-            {
-                foreach (var stat in medium)
-                {
-                    output += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-            }
-            else if (difficulty == "hard")
-            {
-                foreach (var stat in hard)
-                {
-                    output += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-
-            }
-
-            highscore_label.Text = output.ToUpper();
-            this.CenterToScreen();
+            throw new NotImplementedException();
         }
 
- 
-
-        // On submit button
-        private void highscore_btn_Click(object sender, EventArgs e)
+        public highScore_Form(int difficulty, TimeSpan ts, bool win)
         {
+            this.difficulty = difficulty;
+            this.ts = ts;
+            this.win = win;
+        }
 
-            if (difficulty == "easy")
-            {
-                // add submitted score to highscore list
-                easy.Add(new PlayerStats(initials_textbox.Text, difficulty, score));
-                // sort by score
-                var newList = easy.OrderByDescending(PlayerStats => PlayerStats.time).ToList(); // ToList optional
-                // only replace top 5 scores
-                for (var i = 0; i >= 4; i++)
-                {
-                    easy[i] = newList[i];
-                }
-            }
-            else if (difficulty == "medium")
-            {
-                easy.Add(new PlayerStats(initials_textbox.Text, difficulty, score));
-                // sort by score
-                var newList = medium.OrderByDescending(PlayerStats => PlayerStats.time).ToList(); // ToList optional
-                // only replace top 5 scores
-                for (var i = 0; i >= 4; i++)
-                {
-                    medium[i] = newList[i];
-                }
-            }
-            else if (difficulty == "hard")
-            {
-                easy.Add(new PlayerStats(initials_textbox.Text, difficulty, score));
-                // sort by score
-                var newList = hard.OrderByDescending(PlayerStats => PlayerStats.time).ToList(); // ToList optional
-                                                                                                // only replace top 5 scores
-                for (var i = 0; i >= 4; i++)
-                {
-                    hard[i] = newList[i];
-                }
-            }
+        public highScore_Form(int difficulty, TimeSpan ts, bool win, string initials) : this(difficulty, ts, win)
+        {
+            this.initials = initials;
+        }
 
-            if (!File.Exists(@"C:\Users\flame\Downloads\HighScores.txt"))
-            {
-                File.Create(@"C:\Users\flame\Downloads\HighScores.txt").Close();
-            }
-            string delimter = ",";
-            List<string> output = new List<string>();
-            /////////////////////////////////////////////////////////
-            if (difficulty == "easy")
-            {
-                //flexible part ... add as many object as you want based on your app logic
-                for (var i = 0; i < easy.Count; i++)
-                {
-                    output.Add(easy[i].Initials + " " + easy[i].level + " " + Convert.ToString(easy[i].time));
-                }
-            }
-            if (difficulty == "Medium")
-            {
-                for (var i = 0; i < 5; i++)
-                {
-                    output.Add(medium[i].Initials + " " + medium[i].level + " " + Convert.ToString(medium[i].time));
-                }
-            }
-            if (difficulty == "hard")
-            {
-                for (var i = 0; i < 5; i++)
-                {
-                    output.Add(hard[i].Initials + " " + hard[i].level + " " + Convert.ToString(hard[i].time));
-                }
-            }
-            int length = output.Count;
+        //Add the new score to player status.
+        public void NewScore(string name, int difficulty, int time)
+        {
+            scores.Add(new PlayerStats(name, difficulty, time));
+        }
 
-            using (System.IO.TextWriter writer = File.CreateText(@"C:\Users\flame\Downloads\HighScores.txt"))
-            {
-                for (int index = 0; index < length; index++)
-                {
 
-                    writer.WriteLine(string.Join(delimter, output[index]));
+        //Starts a new Game if the button is clicked.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu newGame = new Menu();
+            newGame.Show();
+            this.Close();
+        }
 
-                }
-            }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.ExitThread();
+        }
 
-            // On win or lose show the top five scores for that difficulty
-            string newScore = "Difficulty: " + difficulty + Environment.NewLine + Environment.NewLine;
-
-            if (difficulty == "easy")
-            {
-                foreach (var stat in easy)
-                {
-                    newScore += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-            }
-            else if (difficulty == "medium")
-            {
-                foreach (var stat in medium)
-                {
-                    newScore += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-            }
-            else if (difficulty == "hard")
-            {
-                foreach (var stat in hard)
-                {
-                    newScore += stat.Initials + ": " + stat.time + Environment.NewLine + Environment.NewLine;
-                }
-
-            }
-
-            highscore_label.Text = newScore.ToUpper();
-            initials_textbox.Visible = false;
-            highscore_btn.Visible = false;
-            label4.Visible = false;
-            label5.Visible = false;
-            yourScore_label.Visible = false;
+        private void sortedScorez_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Adds new score to txtfile
+            using (StreamReader input = new StreamReader(Path.Combine(Environment.CurrentDirectory, "HighScores.txt")))
+            {
+                string line;
+                int savedtime;
+                string[] split;
+
+                while ((line = input.ReadLine()) != null)
+                {
+                    split = line.Split(',');
+                    Int32.TryParse(split[2], out savedtime);
+                    NewScore(split[0], split[1], savedtime);
+                }
+            }
+
+            //Sorts the scores from highest to lowest.
+            var queryScores =
+                from PlayerStats in scores
+                where PlayerStats.difficulty == difficulty
+                orderby PlayerStats.time ascending
+                select PlayerStats;
+            //Prints scores in listbox
+            foreach (var PlayerStats in queryScores)
+            {
+                sortedScores.Add(PlayerStats);
+            }
+
+            InitializeComponent();
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            listBox1.Text = "RGB, easy, 00:00:05.9036461 \n LTL, medium, 00:08:15.4536461 \n NML, hard, 00:15:25.4636319 \n TTT, medium, 00:03:25.7890250 ";
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.ExitThread();
+        }
     }
 }

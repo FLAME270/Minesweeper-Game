@@ -26,146 +26,118 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
- 
-
-        #endregion
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(highScore_Form));
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.highscore_btn = new System.Windows.Forms.Button();
-            this.initials_textbox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.yourScore_label = new System.Windows.Forms.Label();
-            this.highscore_label = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button1.Location = new System.Drawing.Point(254, 341);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 43);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Play Again";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(125, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label1.Location = new System.Drawing.Point(89, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Top 5 HighScores";
+            this.label1.Size = new System.Drawing.Size(219, 39);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Top 5 Scores";
             // 
-            // label2
+            // button2
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(125, 33);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 2);
-            this.label2.TabIndex = 1;
+            this.button2.BackColor = System.Drawing.Color.Lime;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button2.Location = new System.Drawing.Point(12, 341);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 43);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Exit Game";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // highscore_btn
+            // pictureBox1
             // 
-            this.highscore_btn.BackColor = System.Drawing.Color.Lime;
-            this.highscore_btn.Location = new System.Drawing.Point(263, 278);
-            this.highscore_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.highscore_btn.Name = "highscore_btn";
-            this.highscore_btn.Size = new System.Drawing.Size(100, 37);
-            this.highscore_btn.TabIndex = 3;
-            this.highscore_btn.Text = "submit";
-            this.highscore_btn.UseVisualStyleBackColor = false;
-            this.highscore_btn.Click += new System.EventHandler(this.highscore_btn_Click);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(87, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
-            // initials_textbox
+            // pictureBox2
             // 
-            this.initials_textbox.Location = new System.Drawing.Point(16, 278);
-            this.initials_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.initials_textbox.Name = "initials_textbox";
-            this.initials_textbox.Size = new System.Drawing.Size(117, 22);
-            this.initials_textbox.TabIndex = 4;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(312, 20);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(87, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
-            // label3
+            // listBox1
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(16, 265);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(343, 2);
-            this.label3.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 242);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Enter Your Initials";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(165, 242);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Your Score:";
-            // 
-            // yourScore_label
-            // 
-            this.yourScore_label.Location = new System.Drawing.Point(259, 242);
-            this.yourScore_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.yourScore_label.Name = "yourScore_label";
-            this.yourScore_label.Size = new System.Drawing.Size(107, 16);
-            this.yourScore_label.TabIndex = 8;
-            this.yourScore_label.Text = "Your Score:";
-            // 
-            // highscore_label
-            // 
-            this.highscore_label.Location = new System.Drawing.Point(100, 42);
-            this.highscore_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.highscore_label.Name = "highscore_label";
-            this.highscore_label.Size = new System.Drawing.Size(200, 190);
-            this.highscore_label.TabIndex = 9;
-            this.highscore_label.Text = "label6";
-            this.highscore_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Items.AddRange(new object[] {
+            "RGB, easy, 00:00:05.9036461",
+            "LTL, medium, 00:08:15.4536461 ",
+            "NML, hard, 00:15:25.4636319 ",
+            "TTT, medium, 00:03:25.7890250 "});
+            this.listBox1.Location = new System.Drawing.Point(13, 91);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(373, 212);
+            this.listBox1.TabIndex = 6;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
             // highScore_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cyan;
-            this.ClientSize = new System.Drawing.Size(379, 321);
-            this.Controls.Add(this.highscore_label);
-            this.Controls.Add(this.yourScore_label);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.initials_textbox);
-            this.Controls.Add(this.highscore_btn);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(401, 392);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "highScore_Form";
-            this.Text = "highScore_Form";
+            this.Text = "Top Scores";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        #endregion
 
-
+       
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button highscore_btn;
-        private System.Windows.Forms.TextBox initials_textbox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label yourScore_label;
-        private System.Windows.Forms.Label highscore_label;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

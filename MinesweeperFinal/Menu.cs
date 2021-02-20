@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*Tyler Wiggins
+This is my own work
+Version 6.9
+CST-227
+Minesweeper Application*/
+
+using System;
 using System.Windows.Forms;
 
 namespace MinesweeperFinal
 {
     public partial class Menu : Form
     {
+        private grid grid;
+
         public Menu()
         {
             InitializeComponent();
         }
+
         // Once the user chooses a difficulty and cliks the play game button, LevelForm will open.
-        private void playGame_btn_Click(object sender, EventArgs e)
+        public void playGame_btn_Click(object sender, EventArgs e)
         {
             if (easy_btn.Checked)
             {
                 // Create a new from and pass difficulty.
                 grid game = new grid(1);
                 // Show new game form.
+
                 game.Show();
             }
             else if (moderate_btn.Checked)
@@ -37,9 +40,11 @@ namespace MinesweeperFinal
             {
                 // Create a new from and pass difficulty.
                 grid game = new grid(3);
+
                 // Show new game form.
                 game.Show();
             }
+            this.Visible = false;
         }
     }
 }
