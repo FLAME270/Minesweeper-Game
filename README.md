@@ -18,8 +18,7 @@
 
 <p>Next step is to clone the Minesweeper game from GitHub. Click the green "Code🔻" button and choose the "Open with Visual Studios" option.
   
-  //picture here
-
+![image](https://user-images.githubusercontent.com/46502423/166841855-1de2a068-da6c-4dcb-83c2-d8216970db72.png)
 
 
 
