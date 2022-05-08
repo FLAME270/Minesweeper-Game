@@ -1,6 +1,5 @@
 <h1 align="center">Hi 👋, I'm Tyler Wiggins, I am a full stack developer with a Bachelor of Science in Software Development.</h1>
-<h3 align="center">I have a passion for full stack development, with the gaol to learn new programming languages and frameworks.</h3>
-<br>
+
 
 <h3 align="left">Project Description:</h3>
 <p>Life is all about learning new things, to challenge myself, I decided to program a modern-looking Minesweeper game using the C# ASP.Net core framework. In the process, I learned how to make forms and program the backend functionality for the user interface. It would be very inconvenient to program every cell, so I used arrays to generate every row and column, then used a random number generator to generate the mines. The most complicated part of my minesweeper program was setting an algorithm that used recursion to detect all of the empty spaces that are not touching a mine and reveal the surrounding numbers.
